@@ -10,7 +10,7 @@ const getRandomDog = async () => {
 const getDogByBreed = async () => {
     const breed = breedInput.value;
     try {
-        const request = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`);
+        const request = await fetch(`https://dog.ceo/api/breed/${breed.toLowerCase()}/images/random`);
 
         if(request.status === 404) {
             throw new Error("Breed not found!");
@@ -27,11 +27,45 @@ const getDogByBreed = async () => {
 
 }
 
+const getSubBreeds = async () => {
+    const breed = breedInput.value;
+    try {
+        const request = await fetch(`https://dog.ceo/api/breed/${breed.toLowerCase()}/list`);
+        if(request.status === 404) {
+            throw new Error("Breed not found!");
+        }
+        const json = await request.json();
+        const breeds = await json.message;
+        if(breeds.length === 0) {
+            throw new Error("No sub-breeds found!");
+        }
+        console.log(breeds);
+
+
+        const list = document.createElement("ol");
+        content.innerHTML = "";
+        content.append(list);
+
+        breeds.forEach((breed) => {
+            const listEl = document.createElement("li");
+            listEl.innerHTML = breed;
+            list.append(listEl);
+        });
+
+    } catch(e) {
+        content.innerHTML = `<p>${e.message}</p>`;
+    }
+
+
+}
+
 let content = document.getElementById('content');
 let imgSrc = '';
 let randomButton = document.getElementById('button-random-dog');
 let breedButton = document.getElementById('button-show-breed');
+let subBreedButton = document.getElementById('button-show-sub-breed');
 let breedInput = document.getElementById('input-breed');
+
 
 
 const image = document.createElement('img');
@@ -41,6 +75,7 @@ content.append(image);
 
 randomButton.addEventListener('click', getRandomDog);
 breedButton.addEventListener('click', getDogByBreed);
+subBreedButton.addEventListener('click', getSubBreeds);
 
 
 
