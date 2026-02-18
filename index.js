@@ -82,7 +82,7 @@ const getAllBreeds = async () => {
                     subBreeedEl.innerHTML = subBreed;
                     subBreedList.append(subBreeedEl);
                 }
-                list.append(subBreedList);
+                listEl.append(subBreedList);
             }
 
 

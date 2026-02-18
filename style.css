@@ -1,0 +1,47 @@
+#main-header {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #255189;
+    text-align: center;
+}
+
+#content {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.inpt {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 15px;
+    border: 3px solid #255189;
+}
+.btn{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+    font-size: 18;
+
+    border: none;
+    color: white;
+    padding: 24px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #255189;
+    height: 30px;
+
+}
